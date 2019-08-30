@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>双向绑定</title>
+    </head>
+    <body>
+        <div>
+            <input type="text" value="1">
+        </div>
+        <script>
+         const ipt = document.querySelector('input')
+         const obj = {}
+         Object.defineProperty(obj, 'value', {
+             get() {
+                 return ipt.value
+             },
+             set(val) {
+                 console.log('val')
+                 ipt.value = val
+             }
+         })
+         ipt.addEventListener('input', (e) => {
+             obj.value = e.target.value
+         })
+         console.log(obj.value)
+        </script>
+    </body>
+</html>
